@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  signInAuthUserWithEmailAmdPassword,
+  signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
@@ -24,10 +24,9 @@ const SingInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const user = await signInAuthUserWithEmailAmdPassword(email, password);
-      console.log("user", user);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
-      alert("User logged in successfully");
+
     } catch (error) {
       if (error.code === "auth/user-not-found") {
         alert("User not found");
@@ -44,8 +43,8 @@ const SingInForm = () => {
   };
 
   const singInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
+    
   };
 
   return (
