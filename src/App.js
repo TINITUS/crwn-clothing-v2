@@ -6,7 +6,7 @@ import Home from './routes/home/home.component';
 import Shop from './routes/shop/shop.component';
 import Contact from './routes/contact/contact.component';
 import Authentication from './routes/authentication/authentication.component';
-
+import Checkout from "./routes/checkout/checkout.component";
 
 
 const App = () => {
@@ -23,6 +23,7 @@ const App = () => {
             currentUser ? <Navigate to="/" replace /> : <Authentication />
           }
         />
+        <Route path="checkout" element={<Checkout />}></Route>
       </Route>
     </Routes>
   );
